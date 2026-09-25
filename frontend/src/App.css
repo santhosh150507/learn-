@@ -147,6 +147,12 @@
   padding: 0 4px;
 }
 
+.notes-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .notes-heading {
   font-size: 1rem;
   font-weight: 600;
@@ -160,6 +166,30 @@
   background: #e2e8f0;
   padding: 2px 8px;
   border-radius: 12px;
+}
+
+.btn-clear {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: #64748b;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-clear:hover:not(:disabled) {
+  background-color: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.btn-clear:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* Notes List */

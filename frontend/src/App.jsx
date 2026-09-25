@@ -69,6 +69,18 @@ function App() {
     }
   };
 
+  // Handle clearing all notes
+  const handleClearAllNotes = async () => {
+    setNotes([]);
+    try {
+      await fetch(API_URL, {
+        method: 'DELETE',
+      });
+    } catch (err) {
+      console.error('Error clearing notes on server:', err);
+    }
+  };
+
   const formatDate = (isoString) => {
     if (!isoString) return '';
     try {
@@ -124,10 +136,20 @@ function App() {
       {/* Notes Display Section */}
       <section className="notes-section">
         <div className="notes-header">
-          <h2 className="notes-heading">All Notes</h2>
-          <span className="notes-count">
-            {notes.length} {notes.length === 1 ? 'note' : 'notes'}
-          </span>
+          <div className="notes-header-left">
+            <h2 className="notes-heading">All Notes</h2>
+            <span className="notes-count">
+              {notes.length} {notes.length === 1 ? 'note' : 'notes'}
+            </span>
+          </div>
+          <button
+            type="button"
+            className="btn-clear"
+            onClick={handleClearAllNotes}
+            disabled={notes.length === 0}
+          >
+            Clear All Notes
+          </button>
         </div>
 
         {isLoading ? (

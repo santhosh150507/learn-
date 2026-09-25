@@ -39,6 +39,12 @@ app.post('/api/notes', (req, res) => {
   res.status(201).json(newNote);
 });
 
+// DELETE /api/notes - Clear all notes
+app.delete('/api/notes', (req, res) => {
+  notes.length = 0;
+  res.json({ message: 'All notes cleared' });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Backend server running on http://localhost:${PORT}`);
